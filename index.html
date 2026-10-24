@@ -23,7 +23,7 @@ table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:9px 10p
 .cal{display:grid;grid-template-columns:110px repeat(5,1fr);gap:4px;font-size:12.5px;min-width:860px}.cal>div{padding:7px 8px;border-radius:8px;background:var(--c)}.cal .h{background:transparent;color:var(--m);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.cal .d{background:var(--c2);font-weight:800}.cal .today{outline:2px solid var(--o)}.cal .past{opacity:.55}
 .pill{display:block;padding:5px 7px;border-radius:7px;margin:2px 0;line-height:1.25}.pill.organic{background:rgba(52,199,89,.15);border-left:3px solid var(--g)}.pill.paid{background:rgba(79,157,255,.16);border-left:3px solid var(--b)}.pill.check{background:rgba(247,140,38,.16);border-left:3px solid var(--o);font-weight:700}
 .scroll{overflow-x:auto}.note{color:var(--m);font-size:12px;margin-top:22px}.btn{background:var(--c2);border:1px solid var(--l);color:var(--t);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700}
-</style><style>#gate{min-height:100vh;display:flex;align-items:center;justify-content:center}#gf{background:#15161a;border:1px solid #272a31;border-radius:20px;padding:30px;width:min(360px,92vw);text-align:center}#gf h2{margin:12px 0 4px;font-size:22px;color:#f3f4f6;letter-spacing:0;text-transform:none}#gf h2:before{display:none}#gf p{color:#9aa1ab;font-size:14px;margin:0 0 16px}#gf input{width:100%;padding:13px;border-radius:12px;border:1px solid #272a31;background:#09090b;color:#f3f4f6;font-size:16px;margin-bottom:10px}#gf button{width:100%;padding:13px;border-radius:12px;border:0;background:#F78C26;color:#1a0d00;font-weight:800;font-size:16px;cursor:pointer}#ge{color:#FF5A5F;font-size:13px;margin-top:10px;min-height:16px}.brain{display:grid;gap:10px}.bi{background:#15161a;border:1px solid #272a31;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.45}.bi.win{border-left:4px solid #34C759}.bi.risk{border-left:4px solid #FF5A5F}.bi.todo{border-left:4px solid #F78C26}.bi small{color:#9aa1ab;display:block;margin-top:4px;font-size:12px}.idea{background:#1b1d22;border:1px solid #272a31;border-radius:16px;padding:14px}.idea h3{margin:0 0 6px;font-size:15px}.idea b{color:#F78C26}.idea p{margin:4px 0;font-size:13.5px;line-height:1.45}.tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(79,157,255,.16);color:#4F9DFF;margin-right:6px}</style></head><body><div id="gate"><form id="gf"><img src="icon.png" alt="" width="56" height="56" style="border-radius:14px"><h2>RTC HQ</h2><p>Private dashboard. Enter your passphrase.</p><input id="pw" type="password" autocomplete="current-password" placeholder="Passphrase" autofocus><button type="submit">Unlock</button><div id="ge"></div></form></div><div class="w" id="app" style="display:none">
+</style><style>details.sec>summary{list-style:none;cursor:pointer}details.sec>summary::-webkit-details-marker{display:none}details.sec>summary h2:after{content:"\25BE";margin-left:auto;color:var(--m);font-size:14px}details.sec:not([open])>summary h2:after{content:"\25B8"}.ctl{display:flex;gap:8px;margin:14px 0 0}.ctl button{background:var(--c2);border:1px solid var(--l);color:var(--t);padding:7px 12px;border-radius:10px;cursor:pointer;font-weight:700;font-size:12px}.ch{cursor:pointer;user-select:none}.ch:after{content:" \25BE";color:var(--m);font-size:11px}.cc .ch:after{content:" \25B8"}.cc>*:not(h3){display:none}.cc .ch{margin-bottom:0}</style><style>#gate{min-height:100vh;display:flex;align-items:center;justify-content:center}#gf{background:#15161a;border:1px solid #272a31;border-radius:20px;padding:30px;width:min(360px,92vw);text-align:center}#gf h2{margin:12px 0 4px;font-size:22px;color:#f3f4f6;letter-spacing:0;text-transform:none}#gf h2:before{display:none}#gf p{color:#9aa1ab;font-size:14px;margin:0 0 16px}#gf input{width:100%;padding:13px;border-radius:12px;border:1px solid #272a31;background:#09090b;color:#f3f4f6;font-size:16px;margin-bottom:10px}#gf button{width:100%;padding:13px;border-radius:12px;border:0;background:#F78C26;color:#1a0d00;font-weight:800;font-size:16px;cursor:pointer}#ge{color:#FF5A5F;font-size:13px;margin-top:10px;min-height:16px}.brain{display:grid;gap:10px}.bi{background:#15161a;border:1px solid #272a31;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.45}.bi.win{border-left:4px solid #34C759}.bi.risk{border-left:4px solid #FF5A5F}.bi.todo{border-left:4px solid #F78C26}.bi small{color:#9aa1ab;display:block;margin-top:4px;font-size:12px}.idea{background:#1b1d22;border:1px solid #272a31;border-radius:16px;padding:14px}.idea h3{margin:0 0 6px;font-size:15px}.idea b{color:#F78C26}.idea p{margin:4px 0;font-size:13.5px;line-height:1.45}.tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(79,157,255,.16);color:#4F9DFF;margin-right:6px}</style></head><body><div id="gate"><form id="gf"><img src="icon.png" alt="" width="56" height="56" style="border-radius:14px"><h2>RTC HQ</h2><p>Private dashboard. Enter your passphrase.</p><input id="pw" type="password" autocomplete="current-password" placeholder="Passphrase" autofocus><button type="submit">Unlock</button><div id="ge"></div></form></div><div class="w" id="app" style="display:none">
 <div class="top"><div><h1>RTC <span>Marketing</span> Dashboard</h1><div class="up" id="up"></div><div class="up" id="age"></div></div>
 <div class="hero"><small>Active users, last 3 days</small><b id="au">-</b><span class="tr fl" id="aut">-</span><small id="aus" style="margin-top:4px;text-transform:none;letter-spacing:0"></small></div></div>
 <div class="f" id="f"></div><div id="o"></div>
@@ -51,6 +51,31 @@ function brainHtml(){
   h+='<h2>Refresh log</h2><div class="card"><table><tbody>'+B.history.map(function(x){return '<tr><td style="white-space:nowrap">'+esc(x.d)+'</td><td>'+esc(x.summary)+'</td></tr>'}).join('')+'</tbody></table></div>';
  }
  return h}
+
+var CS={};try{CS=JSON.parse(localStorage.getItem('rtccol')||'{}')}catch(e){}
+function saveCS(){try{localStorage.setItem('rtccol',JSON.stringify(CS))}catch(e){}}
+function collapsify(){
+ var o=document.getElementById('o'),kids=[].slice.call(o.childNodes),fr=document.createDocumentFragment(),cur=null;
+ kids.forEach(function(n){
+  if(n.nodeType==1&&n.tagName=='H2'){
+   var key='s:'+n.textContent.replace(/\s+/g,' ').trim().slice(0,40);
+   cur=document.createElement('details');cur.className='sec';cur.setAttribute('data-k',key);
+   if(!CS[key])cur.setAttribute('open','');
+   var s=document.createElement('summary');s.appendChild(n);cur.appendChild(s);
+   var b=document.createElement('div');b.className='secb';cur.appendChild(b);cur._b=b;
+   (function(d,k){d.addEventListener('toggle',function(){CS[k]=!d.open;saveCS()})})(cur,key);
+   fr.appendChild(cur)}
+  else if(cur){cur._b.appendChild(n)}else{fr.appendChild(n)}});
+ o.innerHTML='';
+ var ctl=document.createElement('div');ctl.className='ctl';
+ ctl.innerHTML='<button type="button" data-a="0">Collapse all</button><button type="button" data-a="1">Expand all</button>';
+ ctl.addEventListener('click',function(e){var a=e.target.getAttribute('data-a');if(a==null)return;[].forEach.call(o.querySelectorAll('details.sec'),function(d){if(a=='1')d.setAttribute('open','');else d.removeAttribute('open')});[].forEach.call(o.querySelectorAll('.cc'),function(c){if(a=='1'){c.classList.remove('cc')}});if(a=='1'){var k;for(k in CS){if(k.indexOf('c:')==0)delete CS[k]}saveCS()}});
+ o.appendChild(ctl);o.appendChild(fr);
+ [].forEach.call(o.querySelectorAll('.card,.idea'),function(c){
+  var h=null,i;for(i=0;i<c.children.length;i++){if(c.children[i].tagName=='H3'){h=c.children[i];break}}
+  if(!h)return;var key='c:'+h.textContent.replace(/\s+/g,' ').trim().slice(0,40);
+  h.className=(h.className?h.className+' ':'')+'ch';if(CS[key])c.classList.add('cc');
+  h.addEventListener('click',function(){c.classList.toggle('cc');CS[key]=c.classList.contains('cc');saveCS()})})}
 
 
 var R=[["24 hours",1],["3 days",3],["7 days",7],["Month",30],["Year",365],["All time",99999]],cur=2,D=window.RTC_DATA;
@@ -123,7 +148,7 @@ function render(){
   if(chk.length){var oth=plan.filter(function(p){return p.d==d&&p.kind!='check'});h+='<div style="grid-column:span 5"><span class="pill check">'+chk[0].what+'</span>'+oth.map(function(p){return '<span class="pill '+p.kind+'">'+p.net+': '+p.what+'</span>'}).join('')+'</div>';return}
   cols.forEach(function(c){h+='<div>'+plan.filter(function(p){return p.d==d&&colOf(p)==c}).map(function(p){return '<span class="pill '+p.kind+'" title="'+p.code+'">'+(p.kind=='paid'?p.net+': ':'')+p.what+'</span>'}).join('')+'</div>'})});
  h+='</div></div><p class="up">Green = organic post. Blue = paid ad. Orange = decision day. R1 to R5 is your ranking (R1 goes first). The paid slot on 29 Oct is filled by whichever hook wins the 3-day check above. Nothing is scheduled or posted until you say so.</p>';
- h=brainHtml()+h;document.getElementById('o').innerHTML=h;
+ h=brainHtml()+h;document.getElementById('o').innerHTML=h;collapsify();
  document.getElementById('f').innerHTML=R.map(function(r,i){return '<button class="'+(i==cur?'on':'')+'" data-i="'+i+'">'+r[0]+'</button>'}).join('');
  document.getElementById('up').textContent='Data updated '+D.updated;
  var ageH=Math.round((Date.now()-new Date(D.updated.slice(0,16).replace(' ','T')+':00+02:00').getTime())/36e5);
