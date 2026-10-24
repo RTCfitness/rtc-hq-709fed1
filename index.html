@@ -1,0 +1,134 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#09090b"><link rel="icon" href="icon.png"><title>RTC Marketing Dashboard</title>
+<style>
+:root{--bg:#09090b;--c:#15161a;--c2:#1b1d22;--l:#272a31;--t:#f3f4f6;--m:#9aa1ab;--o:#F78C26;--g:#34C759;--r:#FF5A5F;--b:#4F9DFF;--p:#B06BFF;--y:#FFD60A;--pk:#FF4F9A;--cy:#2EE6D6}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 400px at 85% -10%,rgba(247,140,38,.14),transparent),radial-gradient(700px 400px at -10% 0%,rgba(79,157,255,.10),transparent),var(--bg);color:var(--t);font:15px/1.4 Inter,"Segoe UI",system-ui,sans-serif;padding:20px}
+.w{max-width:1180px;margin:auto}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+h1{font-size:28px;margin:0;font-weight:900;letter-spacing:-.02em}h1 span{background:linear-gradient(90deg,var(--o),var(--pk));-webkit-background-clip:text;color:transparent}
+.up{color:var(--m);font-size:12px;margin-top:4px}
+.hero{background:linear-gradient(135deg,#1d1f26,#15161a);border:1px solid var(--l);border-radius:18px;padding:12px 18px;text-align:right;min-width:230px}
+.hero small{display:block;color:var(--m);font-size:11px;letter-spacing:.12em;text-transform:uppercase}.hero b{font-size:40px;font-weight:900;line-height:1.1}
+.tr{display:inline-block;margin-left:10px;padding:3px 10px;border-radius:999px;font-weight:800;font-size:13px;vertical-align:middle}.tr.up2{background:rgba(52,199,89,.16);color:var(--g)}.tr.dn{background:rgba(255,90,95,.16);color:var(--r)}.tr.fl{background:#2a2d34;color:var(--m)}
+.f{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 4px}.f button{border:1px solid var(--l);background:var(--c);color:var(--t);padding:9px 15px;border-radius:999px;font-weight:700;cursor:pointer}.f button:hover{border-color:var(--o)}.f .on{background:linear-gradient(90deg,var(--o),var(--pk));color:#111;border-color:transparent}
+h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--m);margin:26px 0 10px;display:flex;align-items:center;gap:8px}h2:before{content:"";width:18px;height:3px;border-radius:2px;background:var(--o)}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.k{background:var(--c);border:1px solid var(--l);border-radius:16px;padding:14px;position:relative;overflow:hidden}.k:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--a,var(--o))}
+.k b{display:block;font-size:30px;font-weight:900;line-height:1.1}.k span{color:var(--m);font-size:12px}.k.n b{font-size:15px;color:var(--m);font-weight:700;padding:8px 0}
+.card{background:var(--c);border:1px solid var(--l);border-radius:16px;padding:14px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:10px}
+.card h3{margin:0 0 8px;font-size:14px}.leg{display:flex;gap:12px;flex-wrap:wrap;color:var(--m);font-size:12px;margin-bottom:6px}.leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+svg{width:100%;height:auto;display:block}svg text{fill:#8b92a0;font-size:10px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--l)}th{color:var(--m);font-size:11px;text-transform:uppercase;letter-spacing:.08em}td.nd,.nd{color:var(--m)}
+.chip{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700}.live{background:rgba(52,199,89,.16);color:var(--g)}.warn{background:rgba(255,214,10,.14);color:var(--y)}.off{background:rgba(255,90,95,.14);color:var(--r)}
+.verdict{display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:var(--c2);border:1px solid var(--l);border-radius:14px;padding:12px 14px;margin-top:10px}.verdict b{font-size:18px}
+.cal{display:grid;grid-template-columns:110px repeat(5,1fr);gap:4px;font-size:12.5px;min-width:860px}.cal>div{padding:7px 8px;border-radius:8px;background:var(--c)}.cal .h{background:transparent;color:var(--m);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.cal .d{background:var(--c2);font-weight:800}.cal .today{outline:2px solid var(--o)}.cal .past{opacity:.55}
+.pill{display:block;padding:5px 7px;border-radius:7px;margin:2px 0;line-height:1.25}.pill.organic{background:rgba(52,199,89,.15);border-left:3px solid var(--g)}.pill.paid{background:rgba(79,157,255,.16);border-left:3px solid var(--b)}.pill.check{background:rgba(247,140,38,.16);border-left:3px solid var(--o);font-weight:700}
+.scroll{overflow-x:auto}.note{color:var(--m);font-size:12px;margin-top:22px}.btn{background:var(--c2);border:1px solid var(--l);color:var(--t);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700}
+</style><style>#gate{min-height:100vh;display:flex;align-items:center;justify-content:center}#gf{background:#15161a;border:1px solid #272a31;border-radius:20px;padding:30px;width:min(360px,92vw);text-align:center}#gf h2{margin:12px 0 4px;font-size:22px;color:#f3f4f6;letter-spacing:0;text-transform:none}#gf h2:before{display:none}#gf p{color:#9aa1ab;font-size:14px;margin:0 0 16px}#gf input{width:100%;padding:13px;border-radius:12px;border:1px solid #272a31;background:#09090b;color:#f3f4f6;font-size:16px;margin-bottom:10px}#gf button{width:100%;padding:13px;border-radius:12px;border:0;background:#F78C26;color:#1a0d00;font-weight:800;font-size:16px;cursor:pointer}#ge{color:#FF5A5F;font-size:13px;margin-top:10px;min-height:16px}.brain{display:grid;gap:10px}.bi{background:#15161a;border:1px solid #272a31;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.45}.bi.win{border-left:4px solid #34C759}.bi.risk{border-left:4px solid #FF5A5F}.bi.todo{border-left:4px solid #F78C26}.bi small{color:#9aa1ab;display:block;margin-top:4px;font-size:12px}.idea{background:#1b1d22;border:1px solid #272a31;border-radius:16px;padding:14px}.idea h3{margin:0 0 6px;font-size:15px}.idea b{color:#F78C26}.idea p{margin:4px 0;font-size:13.5px;line-height:1.45}.tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(79,157,255,.16);color:#4F9DFF;margin-right:6px}</style></head><body><div id="gate"><form id="gf"><img src="icon.png" alt="" width="56" height="56" style="border-radius:14px"><h2>RTC HQ</h2><p>Private dashboard. Enter your passphrase.</p><input id="pw" type="password" autocomplete="current-password" placeholder="Passphrase" autofocus><button type="submit">Unlock</button><div id="ge"></div></form></div><div class="w" id="app" style="display:none">
+<div class="top"><div><h1>RTC <span>Marketing</span> Dashboard</h1><div class="up" id="up"></div><div class="up" id="age"></div></div>
+<div class="hero"><small>Active users, last 3 days</small><b id="au">-</b><span class="tr fl" id="aut">-</span><small id="aus" style="margin-top:4px;text-transform:none;letter-spacing:0"></small></div></div>
+<div class="f" id="f"></div><div id="o"></div>
+<p class="note">Grey = source not connected (never shown as zero). Firebase and Instagram are daily figures, so "24 hours" shows the latest full day. Data is encrypted in the repository and decrypted in your browser with your passphrase. Claude refreshes that file hourly from Firebase, Metricool, Meta, AdMob and vidIQ, and the "updated" stamp at the top shows how fresh it is. <button class="btn" id="copy">Copy snapshot for Claude</button></p></div>
+<script type="text/plain" id="dash">function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function brainHtml(){
+ var B=D.brain;if(!B)return '';var h='';
+ h+='<h2>Claude analysis <span style="text-transform:none;letter-spacing:0;font-weight:500">'+esc(B.asOf)+'</span></h2>';
+ if(B.headline)h+='<div class="verdict"><b>'+esc(B.headline)+'</b></div>';
+ h+='<div class="brain" style="margin-top:10px">'+(B.analysis||[]).map(function(a){return '<div class="bi '+esc(a.t)+'">'+esc(a.text)+(a.src?'<small>'+esc(a.src)+'</small>':'')+'</div>'}).join('')+'</div>';
+ var T=B.trends;
+ if(T){
+  h+='<h2>Trending now <span style="text-transform:none;letter-spacing:0;font-weight:500">'+esc(T.asOf)+' · '+esc(T.source)+'</span></h2><div class="two">';
+  h+='<div class="card"><h3>Hooks in the first 3 seconds</h3>'+(T.hooks||[]).map(function(x){return '<p style="margin:7px 0;font-size:13.5px"><b style="color:var(--o)">'+esc(x.hook)+'</b><br><span style="color:var(--m)">'+esc(x.why)+'</span></p>'}).join('')+'</div>';
+  h+='<div class="card"><h3>Formats that are overperforming</h3>'+(T.formats||[]).map(function(x){return '<p style="margin:7px 0;font-size:13.5px"><b>'+esc(x.name)+'</b><br><span style="color:var(--m)">'+esc(x.why)+'</span></p>'}).join('')+'</div></div>';
+  h+='<div class="two" style="margin-top:10px"><div class="card"><h3>Sounds</h3>'+(T.audio||[]).map(function(x){return '<p style="margin:6px 0;font-size:13.5px">'+(x.url?'<a style="color:var(--b)" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.name)+'</a>':esc(x.name))+'<br><span style="color:var(--m)">'+esc(x.note)+'</span></p>'}).join('')+'</div>';
+  h+='<div class="card"><h3>Rising search topics</h3>'+((T.keywords&&T.keywords.length)?T.keywords.map(function(x){return '<span class="tag">'+esc(x.kw)+(x.growth?' '+esc(x.growth):'')+'</span>'}).join(''):'<p style="color:var(--m);font-size:13.5px">'+esc(T.keywordsNote||'Not collected yet.')+'</p>')+'</div></div>';
+  if(T.examples&&T.examples.length)h+='<div class="card" style="margin-top:10px"><h3>Posts behind the pattern</h3>'+T.examples.map(function(x){return '<p style="margin:6px 0;font-size:13px"><a style="color:var(--b)" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(x.who)+'</a> · '+esc(x.stat)+' · <span style="color:var(--m)">'+esc(x.text)+'</span></p>'}).join('')+'</div>';
+ }
+ if(B.ideas&&B.ideas.length){
+  h+='<h2>Ad and video ideas to film <span style="text-transform:none;letter-spacing:0;font-weight:500">drafts only, nothing is posted</span></h2><div class="two">';
+  h+=B.ideas.map(function(i){return '<div class="idea"><h3><span class="tag">'+esc(i.platform)+'</span>'+esc(i.title)+'</h3><p><b>Hook (0-3s):</b> '+esc(i.hook)+'</p><p><b>On screen:</b> '+esc(i.onScreen)+'</p><p><b>Script:</b> '+esc(i.script)+'</p><p><b>Sound:</b> '+esc(i.sound)+'</p><p><b>CTA:</b> '+esc(i.cta)+'</p><p style="color:var(--m)">Why: '+esc(i.why)+'</p></div>'}).join('')+'</div>';
+ }
+ if(B.history&&B.history.length){
+  h+='<h2>Refresh log</h2><div class="card"><table><tbody>'+B.history.map(function(x){return '<tr><td style="white-space:nowrap">'+esc(x.d)+'</td><td>'+esc(x.summary)+'</td></tr>'}).join('')+'</tbody></table></div>';
+ }
+ return h}
+
+
+var R=[["24 hours",1],["3 days",3],["7 days",7],["Month",30],["Year",365],["All time",99999]],cur=2,D=window.RTC_DATA;
+function iso(d){return d.toISOString().slice(0,10)}
+function addDays(s,n){var d=new Date(s+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+n);return iso(d)}
+function inRange(rows,end,days){var from=addDays(end,-days+1);return rows.filter(function(r){return r.d>=from&&r.d<=end})}
+function sum(a,f){return a.reduce(function(s,r){return s+(f(r)||0)},0)}
+function K(l,v,s,c){return v==null?'<div class="k n"><b>No data yet</b><span>'+l+'</span></div>':'<div class="k" style="--a:'+(c||'var(--o)')+'"><b>'+v+'</b><span>'+l+(s?' · '+s:'')+'</span></div>'}
+function lbl(d){var x=new Date(d+'T12:00:00Z');return x.getUTCDate()+'/'+(x.getUTCMonth()+1)}
+function nice(m){return m<=3?Math.max(1,Math.ceil(m)):Math.ceil(m/3)*3}
+function grid(max,W,H,pl,pb){var s='',st=max<=3?1:max/3,n=max<=3?max:3;for(var g=0;g<=n;g++){var v=g*st,y=(H-pb)-(H-pb-14)*v/max;s+='<line x1="'+pl+'" x2="'+W+'" y1="'+y+'" y2="'+y+'" stroke="#272a31"/><text x="0" y="'+(y+3)+'">'+v+'</text>'}return s}
+function stacked(rows,series,cols,names){
+ if(!rows.length)return '<div class="nd">No data in this range</div>';
+ var W=560,H=190,pl=28,pb=26,n=rows.length,bw=Math.max(6,Math.min(46,(W-pl)/n-6)),max=1;
+ rows.forEach(function(r){var t=0;series.forEach(function(s){t+=r[s]||0});if(t>max)max=t});max=nice(max);
+ var h='<svg viewBox="0 0 '+W+' '+H+'">';
+ h+=grid(max,W,H,pl,pb);
+ var step=Math.ceil(n/12);
+ rows.forEach(function(r,i){var x=pl+(i+.5)*((W-pl)/n)-bw/2,y0=H-pb,tot=0;
+  series.forEach(function(s,j){var v=r[s]||0,hh=(H-pb-14)*v/max;tot+=v;if(v>0)h+='<rect x="'+x+'" y="'+(y0-hh)+'" width="'+bw+'" height="'+hh+'" rx="3" fill="'+cols[j]+'"><title>'+r.d+' · '+names[j]+': '+v+'</title></rect>';y0-=hh});
+  if(tot>0&&n<=16)h+='<text x="'+(x+bw/2)+'" y="'+(y0-3)+'" text-anchor="middle" style="fill:#e6e8ec;font-weight:700">'+tot+'</text>';
+  if(i%step==0)h+='<text x="'+(x+bw/2)+'" y="'+(H-8)+'" text-anchor="middle">'+lbl(r.d)+'</text>'});
+ return h+'</svg>'}
+function line(rows,f,col){
+ if(rows.length<2)return stacked(rows.map(function(r){return {d:r.d,v:f(r)}}),['v'],[col],['value']);
+ var W=560,H=190,pl=28,pb=26,n=rows.length,max=1;rows.forEach(function(r){if(f(r)>max)max=f(r)});max=nice(max);
+ var pts=rows.map(function(r,i){return [pl+i*((W-pl-24)/(n-1)),(H-pb)-(H-pb-14)*f(r)/max,r]});
+ var h='<svg viewBox="0 0 '+W+' '+H+'"><defs><linearGradient id="gr'+col.slice(1)+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+col+'" stop-opacity=".45"/><stop offset="1" stop-color="'+col+'" stop-opacity="0"/></linearGradient></defs>';
+ h+=grid(max,W,H,pl,pb);
+ var d='M'+pts.map(function(p){return p[0]+','+p[1]}).join(' L');
+ h+='<path d="'+d+' L'+pts[n-1][0]+','+(H-pb)+' L'+pts[0][0]+','+(H-pb)+'Z" fill="url(#gr'+col.slice(1)+')"/><path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="3" stroke-linejoin="round"/>';
+ var step=Math.ceil(n/12);pts.forEach(function(p,i){h+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3.5" fill="'+col+'"><title>'+p[2].d+': '+f(p[2])+'</title></circle>';if(i%step==0)h+='<text x="'+p[0]+'" y="'+(H-8)+'" text-anchor="middle">'+lbl(p[2].d)+'</text>'});
+ return h+'</svg>'}
+function render(){
+ var days=R[cur][1],app=D.app,end=app[app.length-1].d;
+ app.forEach(function(r){r.act=(r.android_active||0)+(r.ios_active||0);r.nw=(r.android_new||0)+(r.ios_new||0)});
+ var rows=inRange(app,end,days),ig=inRange(D.instagram.daily,D.instagram.daily[D.instagram.daily.length-1].d,days);
+ var nA=sum(rows,function(r){return r.android_new}),nI=sum(rows,function(r){return r.ios_new}),all=sum(app,function(r){return r.nw}),act=sum(rows,function(r){return r.act});
+ var last3=inRange(app,end,3),prev3=inRange(app,addDays(end,-3),3),a=sum(last3,function(r){return r.act}),b=sum(prev3,function(r){return r.act});
+ document.getElementById('au').textContent=a;var t=document.getElementById('aut'),dl=a-b,pc=b?Math.round(dl/b*100):0;
+ t.className='tr '+(dl>0?'up2':dl<0?'dn':'fl');t.textContent=(dl>0?'▲ +':dl<0?'▼ ':'▬ ')+pc+'% vs prior 3 days';
+ document.getElementById('aus').textContent='Daily actives added up ('+b+' in the 3 days before)';
+ var am=D.admob,acq=D.acq,arpu=am.monthToDate/acq.activeUsers30d,cpi=acq.metaSpend/acq.installsAll,ratio=arpu/cpi;
+ var h='<h2>App growth (Firebase, live)</h2><div class="g">'+K('New installs',nA+nI,R[cur][0],'var(--g)')+K('Android new',nA,'','var(--cy)')+K('iPhone new',nI,'','var(--b)')+K('Total installs',all,'since 17 Oct','var(--o)')+K('Active user-days',act,R[cur][0],'var(--p)')+K('Sign-ups',D.events.sign_up,'all time','var(--pk)')+'</div>';
+ h+='<div class="two" style="margin-top:10px"><div class="card"><h3>New installs per day</h3><div class="leg"><span><i style="background:var(--cy)"></i>Android</span><span><i style="background:var(--b)"></i>iPhone</span></div>'+stacked(rows,['android_new','ios_new'],['#2EE6D6','#4F9DFF'],['Android','iPhone'])+'</div>';
+ h+='<div class="card"><h3>Active users per day</h3><div class="leg"><span><i style="background:var(--p)"></i>Android + iPhone</span></div>'+line(rows,function(r){return r.act},'#B06BFF')+'</div></div>';
+ h+='<h2>Monetisation: ad income vs acquisition</h2><div class="g">'+K('AdMob earnings, this month','€'+am.monthToDate.toFixed(2),'so far','var(--g)')+K('eCPM, last 7 days','€'+am.last7.ecpm.toFixed(2),(am.last7.ecpm>=am.prev7.ecpm?'▲':'▼')+' vs €'+am.prev7.ecpm.toFixed(2)+' prior week','var(--y)')+K('Impressions, last 7 days',am.last7.impressions,'was '+am.prev7.impressions+' prior week','var(--o)')+K('Match rate',am.last7.matchRate+'%','low = ads not filling','var(--r)')+K('Income per active user','€'+arpu.toFixed(3),'month so far','var(--pk)')+K('Cost per install (blended)','€'+cpi.toFixed(3),'Meta €'+acq.metaSpend.toFixed(2)+' / '+acq.installsAll+' installs','var(--b)')+K('Paying Pro subscribers (RevenueCat)',D.revenuecat.activeSubscriptions,D.revenuecat.activeTrials+' trials. MRR $'+D.revenuecat.mrrUsd+'. 1 manual lifetime grant (not a purchase).','var(--p)')+K('Pro starts (app event, not payments)',acq.proStartUsers+' of '+acq.proCohortInstalls,'Unverified: may include your own test. Real subscribers are in RevenueCat.','var(--p)')+'</div>';
+ var good=ratio>=1,tr=am.last7.ecpm>=am.prev7.ecpm;
+ h+='<div class="verdict"><span class="chip '+(good?'live':'off')+'">'+(good?'POSITIVE':'NEGATIVE (early)')+'</span><b>Each user earns €'+arpu.toFixed(3)+' vs €'+cpi.toFixed(3)+' to acquire = '+Math.round(ratio*100)+'% of cost back</b><span class="chip '+(tr?'live':'warn')+'">eCPM trend '+(tr?'up':'down')+'</span><span style="color:var(--m);font-size:12px">'+acq.note+' Only '+am.last7.impressions+' ad impressions in the last 7 days ('+am.prev7.impressions+' the week before), so eCPM is unreliable until traffic builds.</span></div>';
+ h+='<div class="card" style="margin-top:10px"><h3>eCPM by ad network and format (last 7 days)</h3><table><tr><th>Network and format</th><th>Impressions</th><th>eCPM</th></tr>'+am.formats.map(function(f){return '<tr><td>'+f[0]+'</td><td>'+f[1]+'</td><td>'+(f[1]?'€'+f[2].toFixed(2):'<span class="nd">no fill</span>')+'</td></tr>'}).join('')+'</table><div class="up">'+am.apps+' '+am.unity+'</div></div>';
+ var s=D.social;
+ h+='<h2>Social channels</h2><div class="card scroll"><table><tr><th>Platform</th><th>Status</th><th>Followers</th><th>Views / reach ('+R[cur][0]+')</th><th>Next step</th></tr>'
+ +'<tr><td>Instagram</td><td><span class="chip live">Live</span></td><td>'+s.instagram.followers+'</td><td>'+sum(ig,function(r){return r.views})+' views / '+sum(ig,function(r){return r.reach})+' reach</td><td class="nd">Add bio link; link to Meta ads</td></tr>'
+ +'<tr><td>TikTok</td><td><span class="chip warn">Connected, nothing posted</span></td><td>'+s.tiktok.followers+'</td><td class="nd">0 videos</td><td class="nd">Post V01 on 25 Oct</td></tr>'
+ +'<tr><td>YouTube Shorts</td><td><span class="chip live">Connected</span></td><td>'+s.youtube.subs+' subs</td><td>'+s.youtube.views+' total views, '+s.youtube.videos+' videos</td><td class="nd">Daily views not exposed yet</td></tr>'
+ +'<tr><td>Facebook</td><td><span class="chip off">Not connected for data</span></td><td class="nd">-</td><td class="nd">No data yet</td><td class="nd">Connect the page in Metricool</td></tr></table></div>';
+ var igp=D.igposts||[],pr=igp.filter(function(p){return p.d>=addDays(D.today,-days+1)&&p.d<=D.today}),shown=pr.length?pr:igp;
+ h+='<div class="two" style="margin-top:10px"><div class="card"><h3>Instagram reach per day <span class="nd" style="font-weight:400">(people reached; spikes are posts)</span></h3>'+line(ig,function(r){return r.reach},'#F78C26')+'</div><div class="card"><h3>Views per post</h3><div class="leg"><span><i style="background:#FF4F9A"></i>Views</span></div>'+stacked(igp.map(function(p){return {d:p.d,views:p.views,reach:p.reach}}),['views'],['#FF4F9A'],['Views'])+'</div></div>';
+ h+='<h2>Instagram posts breakdown</h2><div class="card scroll"><table><tr><th>Posted</th><th>Type</th><th>Post</th><th>Views</th><th>Reach</th><th>Likes</th><th>Comments</th><th>Bio link clicks</th></tr>'+shown.map(function(p){return '<tr><td>'+lbl(p.d)+'</td><td>'+p.type+'</td><td><a href="'+p.url+'" target="_blank" style="color:var(--t)">'+p.name+'</a></td><td><b>'+p.views+'</b></td><td>'+p.reach+'</td><td>'+p.likes+'</td><td>'+(p.comments==null?'<span class="nd">-</span>':p.comments)+'</td><td class="nd">'+(p.clicks==null?'No data yet':p.clicks)+'</td></tr>'}).join('')+'</table><div class="up">'+(pr.length?'Posts published in the selected range.':'No posts were published in this range, so all posts to date are shown.')+' The daily chart above is account reach; views per day only exist from 10 Oct, so reach is used. Posts before the app launch (3 Sep, 7 Sep) are personal/dad-training content, the 28 Sep carousel is the beta tester call.</div></div>';
+ h+='<h2>Funnel: video to download</h2><div class="g">'+K('Views to bio-click ratio',null)+K('Bio link clicks',null)+K('Store page visits',null)+K('Store downloads',null)+K('Paid subscribers',D.subs)+K('RTCLAUNCH users',D.promo)+'</div>';
+ var w=D.posts.filter(function(p){return p.views>=500&&p.clicks!=null}).map(function(p){p.score=(p.clicks||0)/p.views*1000;return p}).sort(function(x,y){return y.score-x.score});
+ h+='<h2>Best hook so far</h2><div class="verdict"><b>'+(w.length?w[0].name+' ('+w[0].score.toFixed(1)+' bio clicks per 1,000 views)':'Waiting for 3 days of post data')+'</b><span style="color:var(--m);font-size:12px">Rule: '+D.rules.winner+'</span></div>';
+ var plan=D.plan,days2=[];plan.forEach(function(p){if(days2.indexOf(p.d)<0)days2.push(p.d)});days2.sort();
+ var cols=['Instagram','TikTok','YouTube','Facebook','Paid'];
+ function colOf(p){return (p.kind=='paid'||p.net=='Meta Ads'||p.net=='Google Ads')?'Paid':p.net}
+ h+='<h2>Release plan: organic then paid</h2><div class="card scroll"><div class="cal"><div class="h">Date</div>'+cols.map(function(c){return '<div class="h">'+c+'</div>'}).join('');
+ days2.forEach(function(d){var cls=(d==D.today?' today':d<D.today?' past':''),x=new Date(d+'T12:00:00Z');
+  var chk=plan.filter(function(p){return p.d==d&&p.kind=='check'});
+  h+='<div class="d'+cls+'">'+['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][x.getUTCDay()]+' '+lbl(d)+'</div>';
+  if(chk.length){var oth=plan.filter(function(p){return p.d==d&&p.kind!='check'});h+='<div style="grid-column:span 5"><span class="pill check">'+chk[0].what+'</span>'+oth.map(function(p){return '<span class="pill '+p.kind+'">'+p.net+': '+p.what+'</span>'}).join('')+'</div>';return}
+  cols.forEach(function(c){h+='<div>'+plan.filter(function(p){return p.d==d&&colOf(p)==c}).map(function(p){return '<span class="pill '+p.kind+'" title="'+p.code+'">'+(p.kind=='paid'?p.net+': ':'')+p.what+'</span>'}).join('')+'</div>'})});
+ h+='</div></div><p class="up">Green = organic post. Blue = paid ad. Orange = decision day. R1 to R5 is your ranking (R1 goes first). The paid slot on 29 Oct is filled by whichever hook wins the 3-day check above. Nothing is scheduled or posted until you say so.</p>';
+ h=brainHtml()+h;document.getElementById('o').innerHTML=h;
+ document.getElementById('f').innerHTML=R.map(function(r,i){return '<button class="'+(i==cur?'on':'')+'" data-i="'+i+'">'+r[0]+'</button>'}).join('');
+ document.getElementById('up').textContent='Data updated '+D.updated;
+ var ageH=Math.round((Date.now()-new Date(D.updated.slice(0,16).replace(' ','T')+':00+02:00').getTime())/36e5);
+ document.getElementById('age').innerHTML=ageH>30?'<span class="chip warn">Data is about '+ageH+' h old. Next refresh is due.</span>':'<span class="chip live">Fresh</span>'}
+document.getElementById('f').addEventListener('click',function(e){var i=e.target.getAttribute('data-i');if(i!=null){cur=+i;render()}});
+document.getElementById('copy').addEventListener('click',function(){var ta=document.createElement('textarea');ta.value=JSON.stringify(D);document.body.appendChild(ta);ta.select();try{document.execCommand('copy');this.textContent='Copied. Paste it in the Claude chat'}catch(e){}document.body.removeChild(ta)});
+if(D){render()}else{document.getElementById('o').textContent='data.js missing - keep it in the same folder as this page.'}
+</script><script>(function(){var f=document.getElementById('gf'),pw=document.getElementById('pw'),er=document.getElementById('ge');function b(x){return Uint8Array.from(atob(x),function(c){return c.charCodeAt(0)})}async function go(p){var r=await fetch('data.enc.json?'+Date.now());var e=await r.json();var k=await crypto.subtle.importKey('raw',new TextEncoder().encode(p),'PBKDF2',false,['deriveKey']);var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b(e.salt),iterations:e.iter,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['decrypt']);var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b(e.iv)},key,b(e.ct));window.RTC_DATA=JSON.parse(new TextDecoder().decode(pt));document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';var sc=document.createElement('script');sc.text=document.getElementById('dash').textContent;document.body.appendChild(sc);try{localStorage.setItem('rtchq',p)}catch(x){}}f.addEventListener('submit',function(ev){ev.preventDefault();er.textContent='';go(pw.value).catch(function(){er.textContent='Wrong passphrase or data unavailable.';try{localStorage.removeItem('rtchq')}catch(x){}})});var sv=null;try{sv=localStorage.getItem('rtchq')}catch(x){}if(sv){go(sv).catch(function(){})}})();</script></body></html>
