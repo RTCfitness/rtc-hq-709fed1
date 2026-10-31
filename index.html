@@ -70,7 +70,7 @@ table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:9px 10p
   +tile('Match rate',am.last7.matchRate+'%','Share of ad requests that got an ad. Healthy is far higher.',mrC)
   +tile('Ad requests, 7 days',am.last7.requests,'prior week '+am.prev7.requests,'#4F9DFF')
   +tile('Earnings this month','€'+am.monthToDate.toFixed(2),'last month €'+am.lastMonth.toFixed(2),G)
-  +tile('Meta ad spend','€'+(af.spend||acq.metaSpend).toFixed(2),'one boosted post, paused. '+af.ads[0].linkClicks+' link clicks.','#F78C26')
+  +tile('Meta ad spend this month','€'+(acq.metaSpendMonth||0).toFixed(2),(am.monthToDate>=(acq.metaSpendMonth||0)?'Earnings are higher by €'+(am.monthToDate-(acq.metaSpendMonth||0)).toFixed(2):'Spend is higher than earnings by €'+((acq.metaSpendMonth||0)-am.monthToDate).toFixed(2))+'. Total ever: €'+(af.spend||acq.metaSpend).toFixed(2)+'.',(am.monthToDate>=(acq.metaSpendMonth||0)?G:R))
   +tile('Cost per install',cpiTxt||('€'+(acq.metaSpend/acq.installsAll).toFixed(2)),'Needs tagged ad links to measure. See section below.','#B06BFF')+'</div>';
  var H=D.admobHist||[];
  if(H.length){var mx=1.5*Math.max.apply(null,H.map(function(x){return x.ecpm}));
