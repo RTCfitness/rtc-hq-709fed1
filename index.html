@@ -47,30 +47,33 @@ table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{padding:9px 10p
   return s+'</svg>'}
  function pill(t,c){return '<span style="display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;background:'+c+'22;color:'+c+'">'+t+'</span>'}
  function tile(l,v,sub,c){return '<div class="card" style="padding:12px 14px"><div style="font-size:12px;color:#9aa1ab">'+l+'</div><div style="font-size:26px;font-weight:800;color:'+c+';margin:2px 0">'+v+'</div><div style="font-size:12px;color:#9aa1ab;line-height:1.35">'+sub+'</div></div>'}
- var last=A[A.length-1],l7=A.slice(-7),p7=A.slice(-14,-7),tot=sv(A,function(r){return r.android_new+r.ios_new});
- var n7=sv(l7,function(r){return r.android_new+r.ios_new}),np=sv(p7,function(r){return r.android_new+r.ios_new});
- var a7=sv(l7,function(r){return r.android_active+r.ios_active}),ap=sv(p7,function(r){return r.android_active+r.ios_active});
- var G='#34C759',Y='#FFB020',R='#FF5A5F';
- var instC=n7>=np&&n7>0?G:(n7==0?R:Y), age=fresh(am.asOf);
- var ecpmC=am.last7.ecpm>=am.prev7.ecpm?G:Y, mrC=am.last7.matchRate>=60?G:am.last7.matchRate>=30?Y:R;
+ var AL=A,DY=R[cur][1],RL=R[cur][0],last=A[A.length-1];
+ A=AL.slice(-DY);var P=AL.slice(-2*DY,-DY);
+ var tot=sv(AL,function(r){return r.android_new+r.ios_new});
+ var n7=sv(A,function(r){return r.android_new+r.ios_new}),np=sv(P,function(r){return r.android_new+r.ios_new});
+ var a7=sv(A,function(r){return r.android_active+r.ios_active}),ap=sv(P,function(r){return r.android_active+r.ios_active});
+ var hasP=P.length>0,cmp=function(x){return hasP?'previous period: '+x:'no earlier data'};
+ var G='#34C759',Y='#FFB020',RD='#FF5A5F';
+ var instC=n7>=np&&n7>0?G:(n7==0?RD:Y), age=fresh(am.asOf);
+ var ecpmC=am.last7.ecpm>=am.prev7.ecpm?G:Y, mrC=am.last7.matchRate>=60?G:am.last7.matchRate>=30?Y:RD;
  var cpiTxt=(af.ads&&af.ads[0]&&af.ads[0].installs==null)?'Not measurable yet':'';
- var h='<h2>Health: ads and app</h2>';
- h+='<div class="verdict"><b>App health</b> '+pill(n7+' installs in the last 7 days ('+(n7>=np?'up':'down')+' from '+np+')',instC)+' '+pill('Active user-days '+a7+' (was '+ap+')',a7>=ap?G:Y)+' <span style="display:block;margin-top:6px;color:#9aa1ab;font-size:12.5px">Installs have slowed to a trickle since the first week. Nearly all early installs were testers and launch-week posts. GA4 data through '+ds(last.d)+'.</span></div>';
- h+='<div class="g" style="margin-top:10px">'+tile('Total installs',tot,'Android '+sv(A,function(r){return r.android_new})+' · iPhone '+sv(A,function(r){return r.ios_new})+' (since 17 Oct)',G)
-  +tile('Installs, last 7 days',n7,'prior 7 days: '+np,instC)
-  +tile('Active user-days, 7d',a7,'prior 7 days: '+ap,'#B06BFF')
+ var h='<h2>Health: ads and app</h2><div style="color:#9aa1ab;font-size:12.5px;margin:-4px 0 8px">App numbers follow the range buttons above ('+RL+'). AdMob only gives 7-day figures, so ad numbers do not change with the range.</div>';
+ h+='<div class="verdict"><b>App health</b> '+pill(n7+' installs, '+RL+(hasP?' ('+(n7>=np?'up':'down')+' from '+np+')':'')+'',instC)+' '+pill('Active user-days '+a7+(hasP?' (was '+ap+')':''),a7>=ap?G:Y)+' <span style="display:block;margin-top:6px;color:#9aa1ab;font-size:12.5px">Installs have slowed to a trickle since the first week. Nearly all early installs were testers and launch-week posts. GA4 data through '+ds(last.d)+'.</span></div>';
+ h+='<div class="g" style="margin-top:10px">'+tile('Total installs, all time',tot,'Android '+sv(AL,function(r){return r.android_new})+' · iPhone '+sv(AL,function(r){return r.ios_new})+' (since 17 Oct)',G)
+  +tile('Installs, '+RL,n7,cmp(np),instC)
+  +tile('Active user-days, '+RL,a7,cmp(ap),'#B06BFF')
   +tile('Sign-ups',ev.sign_up,'all time','#FF6FA8')
   +tile('Workouts completed',ev.workout_complete,'all time','#F78C26')
   +tile('Paying Pro (RevenueCat)',rc.activeSubscriptions,'MRR $'+rc.mrrUsd+'. The real money number.','#4F9DFF')+'</div>';
  h+='<div class="two" style="margin-top:10px"><div class="card"><h3>Downloads per day</h3><div class="leg"><span><i style="background:#2EE6D6"></i>Android</span><span><i style="background:#4F9DFF"></i>iPhone</span></div>'+bars(A,['android_new','ios_new'],['#2EE6D6','#4F9DFF'],420,190)+'</div>'
-  +'<div class="card"><h3>Total downloads, running</h3>'+lineC(cum(A),'#34C759',420,190)+'</div></div>';
+  +'<div class="card"><h3>Total downloads, running</h3>'+lineC(cum(AL).slice(-Math.max(DY,2)),'#34C759',420,190)+'</div></div>';
  h+='<div class="card" style="margin-top:10px"><h3>Daily active users</h3>'+bars(A.map(function(r){return {d:r.d,a:r.android_active,i:r.ios_active}}),['a','i'],['#2EE6D6','#4F9DFF'],860,170)+'</div>';
- h+='<div class="verdict" style="margin-top:14px"><b>Ad health</b> '+pill('eCPM €'+am.last7.ecpm.toFixed(2)+(am.last7.ecpm>=am.prev7.ecpm?' ▲':' ▼'),ecpmC)+' '+pill('Match rate '+am.last7.matchRate+'%',mrC)+' '+pill('Ads shown '+am.last7.impressions+' (was '+am.prev7.impressions+')',am.last7.impressions>=am.prev7.impressions?G:R)+' '+pill('CPI: '+(cpiTxt||'€'+(acq.metaSpend/acq.installsAll).toFixed(2)+' blended'),'#9aa1ab')+'<span style="display:block;margin-top:6px;color:#9aa1ab;font-size:12.5px">AdMob read: '+esc(am.source)+(age>2?' · <b style="color:'+Y+'">'+age+' days old, refresh due</b>':'')+'. Requests are going out (400) but almost nothing fills, so ad income is near zero. Likely cause: apps not linked to store listings ("Limited ad serving").</span></div>';
- h+='<div class="g" style="margin-top:10px">'+tile('eCPM, 7 days','€'+am.last7.ecpm.toFixed(2),'prior week €'+am.prev7.ecpm.toFixed(2)+'. Tiny sample: '+am.last7.impressions+' impressions.',ecpmC)
+ h+='<div class="verdict" style="margin-top:14px"><b>Ad health</b> '+pill('eCPM €'+am.last7.ecpm.toFixed(2)+(am.last7.ecpm>=am.prev7.ecpm?' ▲':' ▼'),ecpmC)+' '+pill('Match rate '+am.last7.matchRate+'%',mrC)+' '+pill('Ads shown '+am.last7.impressions+' (was '+am.prev7.impressions+')',am.last7.impressions>=am.prev7.impressions?G:RD)+' '+pill('CPI: '+(cpiTxt||'€'+(acq.metaSpend/acq.installsAll).toFixed(2)+' blended'),'#9aa1ab')+'<span style="display:block;margin-top:6px;color:#9aa1ab;font-size:12.5px">AdMob read: '+esc(am.source)+(age>2?' · <b style="color:'+Y+'">'+age+' days old, refresh due</b>':'')+'. Requests are going out (400) but almost nothing fills, so ad income is near zero. Likely cause: apps not linked to store listings ("Limited ad serving").</span></div>';
+ h+='<div class="g" style="margin-top:10px">'+tile('eCPM, last 7 days','€'+am.last7.ecpm.toFixed(2),'prior week €'+am.prev7.ecpm.toFixed(2)+'. Tiny sample: '+am.last7.impressions+' impressions.',ecpmC)
   +tile('Match rate',am.last7.matchRate+'%','Share of ad requests that got an ad. Healthy is far higher.',mrC)
-  +tile('Ad requests, 7 days',am.last7.requests,'prior week '+am.prev7.requests,'#4F9DFF')
+  +tile('Ad requests, last 7 days',am.last7.requests,'prior week '+am.prev7.requests,'#4F9DFF')
   +tile('Earnings this month','€'+am.monthToDate.toFixed(2),'last month €'+am.lastMonth.toFixed(2),G)
-  +tile('Meta ad spend this month','€'+(acq.metaSpendMonth||0).toFixed(2),(am.monthToDate>=(acq.metaSpendMonth||0)?'Earnings are higher by €'+(am.monthToDate-(acq.metaSpendMonth||0)).toFixed(2):'Spend is higher than earnings by €'+((acq.metaSpendMonth||0)-am.monthToDate).toFixed(2))+'. Total ever: €'+(af.spend||acq.metaSpend).toFixed(2)+'.',(am.monthToDate>=(acq.metaSpendMonth||0)?G:R))
+  +tile('Meta ad spend this month','€'+(acq.metaSpendMonth||0).toFixed(2),(am.monthToDate>=(acq.metaSpendMonth||0)?'Earnings are higher by €'+(am.monthToDate-(acq.metaSpendMonth||0)).toFixed(2):'Spend is higher than earnings by €'+((acq.metaSpendMonth||0)-am.monthToDate).toFixed(2))+'. Total ever: €'+(af.spend||acq.metaSpend).toFixed(2)+'.',(am.monthToDate>=(acq.metaSpendMonth||0)?G:RD))
   +tile('Cost per install',cpiTxt||('€'+(acq.metaSpend/acq.installsAll).toFixed(2)),'Needs tagged ad links to measure. See section below.','#B06BFF')+'</div>';
  var H=D.admobHist||[];
  if(H.length){var mx=1.5*Math.max.apply(null,H.map(function(x){return x.ecpm}));
